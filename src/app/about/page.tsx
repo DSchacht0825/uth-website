@@ -36,7 +36,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[50vh] sm:h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="/images/pexels-vlada-karpovich-4668379-600x400.jpg"
@@ -47,19 +47,19 @@ export default function AboutPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40" />
         </div>
-        <div className="relative z-10 text-center text-white px-6">
-          <h1 className="font-serif text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+        <div className="relative z-10 text-center text-white px-4 sm:px-6 w-full">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 animate-fade-in">
             Our Story
           </h1>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto animate-fade-in-delay">
+          <p className="text-lg sm:text-xl md:text-2xl max-w-3xl mx-auto animate-fade-in-delay px-4">
             Crafting unforgettable moments, one candle at a time
           </p>
         </div>
       </section>
 
       {/* About Introduction */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-6">
+      <section className="py-12 sm:py-16 md:py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div
               id="about-intro"
@@ -113,8 +113,8 @@ export default function AboutPage() {
       </section>
 
       {/* What Makes Us Special */}
-      <section className="py-20 bg-rose-100">
-        <div className="container mx-auto px-6">
+      <section className="py-12 sm:py-16 md:py-20 bg-rose-100">
+        <div className="container mx-auto px-4 sm:px-6">
           <div
             id="special-heading"
             data-animate
@@ -189,8 +189,8 @@ export default function AboutPage() {
       </section>
 
       {/* The Experience */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-6">
+      <section className="py-12 sm:py-16 md:py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div
               id="experience-image"
@@ -263,8 +263,8 @@ export default function AboutPage() {
       </section>
 
       {/* Our Commitment */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-6">
+      <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto">
             <div
               id="commitment-heading"
@@ -335,8 +335,8 @@ export default function AboutPage() {
       </section>
 
       {/* Gratitude Section */}
-      <section className="py-20 bg-gradient-to-b from-rose-50 to-white">
-        <div className="container mx-auto px-6">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-rose-50 to-white">
+        <div className="container mx-auto px-4 sm:px-6">
           <div
             id="gratitude-section"
             data-animate
@@ -382,8 +382,8 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gray-100">
-        <div className="container mx-auto px-6 text-center">
+      <section className="py-12 sm:py-16 md:py-20 bg-gray-100">
+        <div className="container mx-auto px-4 sm:px-6 text-center">
           <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6 text-gray-900">
             Ready to Create Your Signature Scent?
           </h2>

@@ -55,16 +55,17 @@ export default function VideoBackground({ videoId, children }: VideoBackgroundPr
   return (
     <div className="relative w-full h-screen overflow-hidden">
       {/* YouTube Video Background */}
-      <div className="absolute inset-0 w-full h-full">
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
         <div
           id="youtube-background"
-          className="absolute top-1/2 left-1/2 w-screen h-screen"
+          className="absolute top-1/2 left-1/2"
           style={{
             transform: 'translate(-50%, -50%)',
-            minWidth: '100%',
-            minHeight: '100%',
             width: '100vw',
-            height: '56.25vw', // 16:9 aspect ratio
+            height: '100vh',
+            minWidth: '177.77vh', // 16:9 aspect ratio minimum width
+            minHeight: '56.25vw', // 16:9 aspect ratio minimum height
+            maxWidth: 'none',
             pointerEvents: 'none',
           }}
         />
@@ -74,7 +75,7 @@ export default function VideoBackground({ videoId, children }: VideoBackgroundPr
       <div className="absolute inset-0 bg-black/40 z-10" />
 
       {/* Content */}
-      <div className="relative z-20 flex items-center justify-center h-full">
+      <div className="relative z-20 flex items-center justify-center h-full px-4">
         {children}
       </div>
     </div>

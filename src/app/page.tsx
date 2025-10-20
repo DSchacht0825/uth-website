@@ -10,24 +10,24 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Hero Section with Video Background */}
       <VideoBackground videoId="7Iuezo2gf1I">
-        <div className="container mx-auto px-6 text-center text-white">
-          <h1 className="font-serif text-5xl md:text-7xl font-bold mb-6 leading-tight">
+        <div className="container mx-auto px-4 sm:px-6 text-center text-white w-full">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
             Welcome to the<br />
             <span className="italic">Candle Experience</span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
             Under The Heavens Collection
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 max-w-md sm:max-w-none mx-auto">
             <Link
               href="/products"
-              className="bg-white text-gray-900 px-8 py-4 rounded-sm hover:bg-gray-100 transition-colors text-sm uppercase tracking-wider font-medium"
+              className="bg-white text-gray-900 px-6 sm:px-8 py-3 sm:py-4 rounded-sm hover:bg-gray-100 transition-colors text-xs sm:text-sm uppercase tracking-wider font-medium w-full sm:w-auto"
             >
               Shop Collection
             </Link>
             <Link
               href="/booking"
-              className="border-2 border-white text-white px-8 py-4 rounded-sm hover:bg-white hover:text-gray-900 transition-colors text-sm uppercase tracking-wider font-medium"
+              className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-sm hover:bg-white hover:text-gray-900 transition-colors text-xs sm:text-sm uppercase tracking-wider font-medium w-full sm:w-auto"
             >
               Book Experience
             </Link>
@@ -36,9 +36,9 @@ export default function Home() {
       </VideoBackground>
 
       {/* Introduction Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-12">
+      <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid md:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
             <div className="text-center group">
               <div className="mb-6 flex justify-center">
                 <div className="relative w-48 h-48 rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow">
@@ -94,8 +94,8 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className="py-20 bg-rose-100">
-        <div className="container mx-auto px-6">
+      <section className="py-12 sm:py-16 md:py-20 bg-rose-100">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6 text-gray-900">
               Select Your Vessel
@@ -114,8 +114,8 @@ export default function Home() {
       </section>
 
       {/* Featured Products */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-6">
+      <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6">
           <h2 className="font-serif text-4xl font-bold text-center mb-12 text-gray-900">
             Weekly Best Sellers
           </h2>
@@ -161,8 +161,8 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gray-100">
-        <div className="container mx-auto px-6 text-center">
+      <section className="py-12 sm:py-16 md:py-20 bg-gray-100">
+        <div className="container mx-auto px-4 sm:px-6 text-center">
           <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6 text-gray-900">
             Ready to Create Your Perfect Scent?
           </h2>
