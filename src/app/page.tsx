@@ -1,10 +1,40 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
 import VideoBackground from '@/components/layout/VideoBackground';
 import { getAllProducts } from '@/lib/products';
 
 export default function Home() {
   const products = getAllProducts();
+  const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({});
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible((prev) => ({ ...prev, [entry.target.id]: true }));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll('[data-animate]').forEach((el) => {
+      if (observerRef.current) {
+        observerRef.current.observe(el);
+      }
+    });
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
 
   return (
     <div className="min-h-screen">
@@ -39,56 +69,53 @@ export default function Home() {
       <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="grid md:grid-cols-3 gap-8 sm:gap-10 md:gap-12">
-            <div className="text-center group">
-              <div className="mb-6 flex justify-center">
-                <div className="relative w-48 h-48 rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow">
-                  <Image
-                    src="/images/pexels-vlada-karpovich-4668379-600x400.jpg"
-                    alt="Candles"
-                    fill
-                    className="object-cover"
-                  />
+            {[
+              {
+                id: 'intro-1',
+                image: '/images/pexels-vlada-karpovich-4668379-600x400.jpg',
+                title: 'Candles',
+                description: 'Craft the perfect blend with our hands-on, interactive experience.',
+                delay: ''
+              },
+              {
+                id: 'intro-2',
+                image: '/images/tempImageM5DH1B-600x450.jpg',
+                title: 'Shop Online',
+                description: 'Browse our online collection of Beeswax, coconut and apricot candles.',
+                delay: 'delay-200'
+              },
+              {
+                id: 'intro-3',
+                image: '/images/pexels-shvetsa-5760870-600x400.jpg',
+                title: 'Scents',
+                description: 'Check out the 70 scents we carry. Every scent combination is unique.',
+                delay: 'delay-400'
+              }
+            ].map((item) => (
+              <div
+                key={item.id}
+                id={item.id}
+                data-animate
+                className={`text-center group transition-all duration-1000 ${item.delay} ${
+                  isVisible[item.id]
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-10'
+                }`}
+              >
+                <div className="mb-6 flex justify-center">
+                  <div className="relative w-48 h-48 rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
                 </div>
+                <h3 className="font-serif text-2xl font-semibold mb-4 text-gray-900">{item.title}</h3>
+                <p className="text-gray-700">{item.description}</p>
               </div>
-              <h3 className="font-serif text-2xl font-semibold mb-4 text-gray-900">Candles</h3>
-              <p className="text-gray-700">
-                Craft the perfect blend with our hands-on, interactive experience.
-              </p>
-            </div>
-
-            <div className="text-center group">
-              <div className="mb-6 flex justify-center">
-                <div className="relative w-48 h-48 rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow">
-                  <Image
-                    src="/images/tempImageM5DH1B-600x450.jpg"
-                    alt="Shop Online"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-              <h3 className="font-serif text-2xl font-semibold mb-4 text-gray-900">Shop Online</h3>
-              <p className="text-gray-700">
-                Browse our online collection of Beeswax, coconut and apricot candles.
-              </p>
-            </div>
-
-            <div className="text-center group">
-              <div className="mb-6 flex justify-center">
-                <div className="relative w-48 h-48 rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow">
-                  <Image
-                    src="/images/pexels-shvetsa-5760870-600x400.jpg"
-                    alt="Scents"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-              <h3 className="font-serif text-2xl font-semibold mb-4 text-gray-900">Scents</h3>
-              <p className="text-gray-700">
-                Check out the 70 scents we carry. Every scent combination is unique.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -96,7 +123,15 @@ export default function Home() {
       {/* About Section */}
       <section className="py-12 sm:py-16 md:py-20 bg-rose-100">
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="max-w-4xl mx-auto text-center">
+          <div
+            id="vessel-section"
+            data-animate
+            className={`max-w-4xl mx-auto text-center transition-all duration-1000 ${
+              isVisible['vessel-section']
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-10'
+            }`}
+          >
             <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6 text-gray-900">
               Select Your Vessel
             </h2>
@@ -116,38 +151,58 @@ export default function Home() {
       {/* Featured Products */}
       <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6">
-          <h2 className="font-serif text-4xl font-bold text-center mb-12 text-gray-900">
-            Weekly Best Sellers
-          </h2>
+          <div
+            id="products-heading"
+            data-animate
+            className={`transition-all duration-1000 ${
+              isVisible['products-heading']
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-10'
+            }`}
+          >
+            <h2 className="font-serif text-4xl font-bold text-center mb-12 text-gray-900">
+              Weekly Best Sellers
+            </h2>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 max-w-md sm:max-w-none mx-auto">
-            {products.map((product) => (
-              <Link
+            {products.map((product, index) => (
+              <div
                 key={product.id}
-                href={`/products/${product.slug}`}
-                className="group w-full"
+                id={`product-${index}`}
+                data-animate
+                className={`transition-all duration-1000 delay-${index * 200} ${
+                  isVisible[`product-${index}`]
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-10'
+                }`}
               >
-                <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                  <div className="aspect-square relative w-full">
-                    <Image
-                      src={product.images.main}
-                      alt={product.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="font-serif text-xl font-semibold mb-2">
-                      {product.name}
-                    </h3>
-                    <p className="text-gray-600 text-sm mb-3">{product.scent}</p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-2xl font-bold">${product.price.toFixed(2)}</span>
-                      <span className="text-sm text-gray-500">{product.specs?.weight}</span>
+                <Link
+                  href={`/products/${product.slug}`}
+                  className="group w-full block"
+                >
+                  <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div className="aspect-square relative w-full">
+                      <Image
+                        src={product.images.main}
+                        alt={product.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="font-serif text-xl font-semibold mb-2">
+                        {product.name}
+                      </h3>
+                      <p className="text-gray-600 text-sm mb-3">{product.scent}</p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-2xl font-bold">${product.price.toFixed(2)}</span>
+                        <span className="text-sm text-gray-500">{product.specs?.weight}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             ))}
           </div>
           <div className="text-center mt-12">
