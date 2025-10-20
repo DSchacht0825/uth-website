@@ -119,20 +119,21 @@ export default function Home() {
           <h2 className="font-serif text-4xl font-bold text-center mb-12 text-gray-900">
             Weekly Best Sellers
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 max-w-md sm:max-w-none mx-auto">
             {products.map((product) => (
               <Link
                 key={product.id}
                 href={`/products/${product.slug}`}
-                className="group"
+                className="group w-full"
               >
                 <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                  <div className="aspect-square relative">
+                  <div className="aspect-square relative w-full">
                     <Image
                       src={product.images.main}
                       alt={product.name}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
                     />
                   </div>
                   <div className="p-6">
