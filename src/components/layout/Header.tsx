@@ -42,13 +42,13 @@ export default function Header() {
           </div>
 
           {/* Centered Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center flex-1 justify-center lg:flex-initial lg:justify-start">
             <Image
               src="/images/Under-The-Heavens-Collection-UTH-e1713160337359.png"
               alt="UTH Candles Logo"
               width={200}
               height={80}
-              className="h-16 w-auto md:h-20"
+              className="h-12 w-auto md:h-16 lg:h-20"
               priority
             />
           </Link>
@@ -93,16 +93,16 @@ export default function Header() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2"
+            className="lg:hidden p-2 text-gray-900 hover:text-gray-700"
             aria-label="Toggle menu"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              strokeWidth={1.5}
+              strokeWidth={2}
               stroke="currentColor"
-              className="w-6 h-6"
+              className="w-7 h-7"
             >
               {mobileMenuOpen ? (
                 <path
