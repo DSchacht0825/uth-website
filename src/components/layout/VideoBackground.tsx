@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 
 interface VideoBackgroundProps {
   videoId: string;
@@ -8,7 +8,6 @@ interface VideoBackgroundProps {
 }
 
 export default function VideoBackground({ videoId, children }: VideoBackgroundProps) {
-  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     // Load YouTube IFrame API
@@ -18,8 +17,10 @@ export default function VideoBackground({ videoId, children }: VideoBackgroundPr
     firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
 
     // Create YouTube player when API is ready
-    (window as any).onYouTubeIframeAPIReady = () => {
-      new (window as any).YT.Player('youtube-background', {
+    (window as Window & { onYouTubeIframeAPIReady?: () => void; YT?: { Player: new (id: string, config: Record<string, unknown>) => void; PlayerState: { ENDED: number } } }).onYouTubeIframeAPIReady = () => {
+      const YT = (window as Window & { YT?: { Player: new (id: string, config: Record<string, unknown>) => void; PlayerState: { ENDED: number } } }).YT;
+      if (!YT) return;
+      new YT.Player('youtube-background', {
         videoId: videoId,
         playerVars: {
           autoplay: 1,
@@ -36,14 +37,14 @@ export default function VideoBackground({ videoId, children }: VideoBackgroundPr
           playsinline: 1,
         },
         events: {
-          onReady: (event: any) => {
+          onReady: (event: { target: { mute: () => void; playVideo: () => void } }) => {
             event.target.mute();
             event.target.playVideo();
-            setIsLoaded(true);
           },
-          onStateChange: (event: any) => {
+          onStateChange: (event: { data: number; target: { playVideo: () => void } }) => {
             // Ensure video loops by restarting when it ends
-            if (event.data === (window as any).YT.PlayerState.ENDED) {
+            const YT = (window as Window & { YT?: { PlayerState: { ENDED: number } } }).YT;
+            if (YT && event.data === YT.PlayerState.ENDED) {
               event.target.playVideo();
             }
           },

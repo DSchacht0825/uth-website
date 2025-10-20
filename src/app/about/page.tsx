@@ -128,7 +128,7 @@ export default function AboutPage() {
               What Makes Us Special
             </h2>
             <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-              We're not just selling candles – we're offering an experience that engages all your senses
+              We&apos;re not just selling candles – we&apos;re offering an experience that engages all your senses
             </p>
           </div>
 
@@ -137,7 +137,7 @@ export default function AboutPage() {
               {
                 id: 'special-1',
                 title: 'Unique Luxury Blend',
-                description: 'Our candles feature a unique blend of beeswax, coconut, and apricot. We\'re the sole provider of this exceptional blend in San Diego.',
+                description: 'Our candles feature a unique blend of beeswax, coconut, and apricot. We&apos;re the sole provider of this exceptional blend in San Diego.',
                 image: '/images/pexels-shvetsa-5760870-600x400.jpg',
                 delay: 'delay-100'
               },
@@ -224,7 +224,7 @@ export default function AboutPage() {
               </h2>
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                 When you join us for one of our candle making classes, you embark on a sensory journey.
-                Guided by our expert instructors, you'll discover the artistry behind scent selection,
+                Guided by our expert instructors, you&apos;ll discover the artistry behind scent selection,
                 wax pouring techniques, and personalized candle creation.
               </p>
               <p className="text-lg text-gray-700 mb-6 leading-relaxed">
@@ -292,7 +292,7 @@ export default function AboutPage() {
               <div className="bg-white rounded-lg p-8 shadow-lg hover:shadow-xl transition-shadow">
                 <p className="text-lg text-gray-700 leading-relaxed mb-6">
                   At Under The Heavens Collection, <span className="font-semibold text-gray-900">integrity and excellence are at the core of everything we do</span>.
-                  We're committed to providing our customers with not only exceptional products but also outstanding customer experiences.
+                  We&apos;re committed to providing our customers with not only exceptional products but also outstanding customer experiences.
                 </p>
                 <p className="text-lg text-gray-700 leading-relaxed">
                   Because we understand firsthand <span className="font-semibold text-gray-900">the power of resilience and determination</span>,
@@ -360,7 +360,7 @@ export default function AboutPage() {
 
               <div className="space-y-6">
                 <p className="text-lg text-gray-700 leading-relaxed text-center">
-                  I'd like to thank my <span className="font-semibold text-gray-900">children, family, my Church Tsidkenu Revival Hub</span> and
+                  I&apos;d like to thank my <span className="font-semibold text-gray-900">children, family, my Church Tsidkenu Revival Hub</span> and
                   my <span className="font-semibold text-gray-900">Lord and Savior Jesus Christ</span> for making this all possible.
                 </p>
 
