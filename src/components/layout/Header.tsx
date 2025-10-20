@@ -14,10 +14,10 @@ export default function Header() {
     { label: 'Home', href: '/' },
     { label: 'About', href: '/about' },
     { label: 'Shop', href: '/products' },
-    { label: 'Gallery', href: '/gallery' },
   ];
 
   const rightNavItems = [
+    { label: 'Gallery', href: '/gallery' },
     { label: 'Reservation', href: '/booking' },
     { label: 'Contact', href: '/contact' },
   ];
