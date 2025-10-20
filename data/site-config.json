@@ -1,0 +1,25 @@
+{
+  "name": "UTH Candles",
+  "description": "Under The Heavens Collection - Premium hand-poured soy candles with luxurious fragrances",
+  "url": "https://www.uthcandles.com",
+  "logo": "/images/Under-The-Heavens-Collection-UTH-e1713160337359.png",
+  "contact": {
+    "email": "info@uthcandles.com",
+    "phone": "(555) 123-4567",
+    "address": "San Diego, CA"
+  },
+  "social": {
+    "instagram": "https://instagram.com/uthcandles",
+    "facebook": "https://facebook.com/uthcandles"
+  },
+  "shipping": {
+    "freeShippingThreshold": 50,
+    "rates": {
+      "standard": 5.99,
+      "express": 12.99
+    }
+  },
+  "tax": {
+    "rate": 0.0775
+  }
+}

@@ -1,0 +1,82 @@
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
+
+interface VideoBackgroundProps {
+  videoId: string;
+  children?: React.ReactNode;
+}
+
+export default function VideoBackground({ videoId, children }: VideoBackgroundProps) {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Load YouTube IFrame API
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+
+    // Create YouTube player when API is ready
+    (window as any).onYouTubeIframeAPIReady = () => {
+      new (window as any).YT.Player('youtube-background', {
+        videoId: videoId,
+        playerVars: {
+          autoplay: 1,
+          controls: 0,
+          showinfo: 0,
+          modestbranding: 1,
+          loop: 1,
+          fs: 0,
+          cc_load_policy: 0,
+          iv_load_policy: 3,
+          autohide: 1,
+          playlist: videoId, // Required for looping - MUST be same as videoId
+          mute: 1,
+          playsinline: 1,
+        },
+        events: {
+          onReady: (event: any) => {
+            event.target.mute();
+            event.target.playVideo();
+            setIsLoaded(true);
+          },
+          onStateChange: (event: any) => {
+            // Ensure video loops by restarting when it ends
+            if (event.data === (window as any).YT.PlayerState.ENDED) {
+              event.target.playVideo();
+            }
+          },
+        },
+      });
+    };
+  }, [videoId]);
+
+  return (
+    <div className="relative w-full h-screen overflow-hidden">
+      {/* YouTube Video Background */}
+      <div className="absolute inset-0 w-full h-full">
+        <div
+          id="youtube-background"
+          className="absolute top-1/2 left-1/2 w-screen h-screen"
+          style={{
+            transform: 'translate(-50%, -50%)',
+            minWidth: '100%',
+            minHeight: '100%',
+            width: '100vw',
+            height: '56.25vw', // 16:9 aspect ratio
+            pointerEvents: 'none',
+          }}
+        />
+      </div>
+
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/40 z-10" />
+
+      {/* Content */}
+      <div className="relative z-20 flex items-center justify-center h-full">
+        {children}
+      </div>
+    </div>
+  );
+}

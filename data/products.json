@@ -1,0 +1,85 @@
+{
+  "products": [
+    {
+      "id": "lily-of-the-valley",
+      "name": "Lily of the Valley Candle",
+      "slug": "lily-of-the-valley",
+      "description": "A delicate and sweet floral fragrance that captures the essence of spring. Our Lily of the Valley candle features clean, fresh notes that create a serene and uplifting atmosphere.",
+      "price": 28.00,
+      "images": {
+        "main": "/images/58-Lily-of-the-Valley-1024x1024.webp",
+        "gallery": [
+          "/images/58-Lily-of-the-Valley-2048x2048.webp",
+          "/images/58-Lily-of-the-Valley-1536x1536.webp",
+          "/images/58-Lily-of-the-Valley-1024x1024.webp"
+        ],
+        "thumbnail": "/images/58-Lily-of-the-Valley-300x300.png"
+      },
+      "category": "candles",
+      "scent": "Floral - Fresh & Clean",
+      "featured": true,
+      "inStock": true,
+      "inventory": 25,
+      "specs": {
+        "weight": "8 oz",
+        "burnTime": "40-50 hours",
+        "dimensions": "3.5\" diameter x 4\" height",
+        "materials": ["100% Soy Wax", "Cotton Wick", "Premium Fragrance Oils"]
+      }
+    },
+    {
+      "id": "gardenia",
+      "name": "Gardenia Candle",
+      "slug": "gardenia",
+      "description": "Luxurious and intoxicating, our Gardenia candle brings the enchanting fragrance of exotic blooms into your home. Rich, creamy floral notes create an elegant and sophisticated ambiance.",
+      "price": 28.00,
+      "images": {
+        "main": "/images/59-Gardenia-1024x1024.webp",
+        "gallery": [
+          "/images/59-Gardenia-2048x2048.webp",
+          "/images/59-Gardenia-1536x1536.webp",
+          "/images/59-Gardenia-1024x1024.webp"
+        ],
+        "thumbnail": "/images/59-Gardenia-300x300.png"
+      },
+      "category": "candles",
+      "scent": "Floral - Rich & Creamy",
+      "featured": true,
+      "inStock": true,
+      "inventory": 30,
+      "specs": {
+        "weight": "8 oz",
+        "burnTime": "40-50 hours",
+        "dimensions": "3.5\" diameter x 4\" height",
+        "materials": ["100% Soy Wax", "Cotton Wick", "Premium Fragrance Oils"]
+      }
+    },
+    {
+      "id": "patchouli",
+      "name": "Patchouli Candle",
+      "slug": "patchouli",
+      "description": "Earthy and grounding, our Patchouli candle offers a deep, musky aroma with hints of wood and spice. Perfect for meditation and creating a warm, inviting space.",
+      "price": 28.00,
+      "images": {
+        "main": "/images/60-Patchouli-1024x1024.webp",
+        "gallery": [
+          "/images/60-Patchouli-2048x2048.webp",
+          "/images/60-Patchouli-1536x1536.webp",
+          "/images/60-Patchouli-1024x1024.webp"
+        ],
+        "thumbnail": "/images/60-Patchouli-300x300.png"
+      },
+      "category": "candles",
+      "scent": "Earthy - Musky & Warm",
+      "featured": true,
+      "inStock": true,
+      "inventory": 20,
+      "specs": {
+        "weight": "8 oz",
+        "burnTime": "40-50 hours",
+        "dimensions": "3.5\" diameter x 4\" height",
+        "materials": ["100% Soy Wax", "Cotton Wick", "Premium Fragrance Oils"]
+      }
+    }
+  ]
+}
